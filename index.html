@@ -5,79 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abonnement - Grand François TV</title>
     <style>
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
-            margin: 0; 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
         }
-        .card { 
-            background: white; 
-            padding: 35px; 
-            border-radius: 15px; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
-            width: 90%; 
-            max-width: 420px; 
-            text-align: center; 
+        .card {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
         }
-        .header-title { color: #1e3c72; margin-bottom: 5px; font-size: 24px; }
-        .subtitle { color: #666; font-size: 14px; margin-bottom: 25px; }
-        .form-group { margin-bottom: 18px; text-align: left; }
-        label { font-weight: bold; font-size: 13px; color: #333; display: block; margin-bottom: 5px; }
-        input, select { 
-            width: 100%; 
-            padding: 12px; 
-            border: 1px solid #cccccc; 
-            border-radius: 8px; 
-            box-sizing: border-box; 
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 5px;
+        }
+        .profile-pic {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #1e3c72;
+        }
+        h2 {
+            color: #1e3c72;
+            margin: 0;
+            font-size: 24px;
+        }
+        .subtitle {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+            font-size: 13px;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
             font-size: 14px;
         }
-        input:focus, select:focus { border-color: #2a5298; outline: none; }
-        .btn-pay { 
-            width: 100%; 
-            padding: 14px; 
-            background-color: #28a745; 
-            color: white; 
-            border: none; 
-            border-radius: 8px; 
-            font-size: 16px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            margin-top: 15px; 
+        .btn-pay {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
             transition: background 0.3s;
         }
-        .btn-pay:hover { background-color: #218838; }
-        .footer-note { font-size: 12px; color: #888; margin-top: 20px; }
+        .btn-pay:hover {
+            background-color: #218838;
+        }
+        .footer-text {
+            margin-top: 15px;
+            font-size: 11px;
+            color: #888;
+        }
     </style>
 </head>
 <body>
 
 <div class="card">
-    <h2 class="header-title">Grand François TV</h2>
-    <p class="subtitle">Activation de Licence & Abonnement D-SoftBook</p>
+    <div class="header-container">
+        <h2>Grand François TV</h2>
+        <!-- Remplacez le lien de l'image par l'URL directe de votre photo si vous l'hébergez en ligne -->
+        <img src="https://github.com/mukendikabongo78-cmyk.png" alt="Grand François" class="profile-pic">
+    </div>
     
+    <p class="subtitle">Activation de Licence & Abonnement D-SoftBook</p>
+
     <form action="/payer-flexpay" method="POST">
         <div class="form-group">
-            <label>Numéro Mobile Money (M-Pesa, Orange, Airtel)</label>
-            <input type="text" name="phone" placeholder="Ex: 0812345678" required>
+            <label for="phone">Numéro Mobile Money (M-Pesa, Orange, Airtel)</label>
+            <input type="tel" id="phone" name="phone" placeholder="Ex: 0812345678" required>
         </div>
-        
+
         <div class="form-group">
-            <label>Choisir la formule d'abonnement</label>
-            <select name="duree">
-                <option value="30">1 Mois - Licence Standard</option>
-                <option value="90">3 Mois - Licence Trimestrielle</option>
-                <option value="365">1 An - Licence Annuelle (Recommandé)</option>
+            <label for="duree">Choisir la formule d'abonnement</label>
+            <select id="duree" name="duree">
+                <option value="1">1 Mois - Licence Standard ($15)</option>
+                <option value="2">2 Mois - Licence Standard ($25)</option>
+                <option value="3">3 Mois - Licence Trimestrielle ($45)</option>
+                <option value="12">1 An - Licence Annuelle Recommandée ($150)</option>
+                <option value="99">À Vie - Licence Illimitée ($250)</option>
             </select>
         </div>
-        
+
         <button type="submit" class="btn-pay">Payer via FlexPay</button>
     </form>
-    
-    <p class="footer-note">Paiement sécurisé. Votre licence sera activée automatiquement après validation.</p>
+
+    <p class="footer-text">Paiement sécurisé. Votre licence sera activée automatiquement après validation.</p>
 </div>
 
 </body>

@@ -16,12 +16,35 @@ app.post('/payer-flexpay', (req, res) => {
     const telephone = req.body.phone;
     const duree = req.body.duree;
     
+    // --- CONVERSION DE LA DURÉE EN TEXTE CLAIR POUR L'AFFICHAGE ---
+    let dureeTexte = "";
+    
+    switch (duree) {
+        case "1":
+            dureeTexte = "1 mois";
+            break;
+        case "2":
+            dureeTexte = "2 mois";
+            break;
+        case "3":
+            dureeTexte = "3 mois";
+            break;
+        case "12":
+            dureeTexte = "1 an (12 mois)";
+            break;
+        case "99":
+            dureeTexte = "à vie (illimité)";
+            break;
+        default:
+            dureeTexte = duree + " mois";
+    }
+
     // Message de confirmation
     res.send(`
         <div style="font-family: Arial; text-align: center; padding: 50px;">
             <h2 style="color: #28a745;">Demande de paiement envoyée !</h2>
             <p>Un message a été envoyé au numéro <strong>${telephone}</strong>.</p>
-            <p>Veuillez valider le paiement sur votre téléphone Mobile Money pour activer votre abonnement de ${duree} jours.</p>
+            <p>Veuillez valider le paiement sur votre téléphone Mobile Money pour activer votre abonnement de <strong>${dureeTexte}</strong>.</p>
             <br>
             <a href="/" style="text-decoration: none; color: #007bff;">← Retourner à l'accueil</a>
         </div>

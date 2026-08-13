@@ -1,0 +1,12 @@
+{
+  "name": "gftvinscription-licences",
+  "version": "1.0.0",
+  "description": "Gestion des abonnements et licences GFTV",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
